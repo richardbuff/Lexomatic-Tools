@@ -969,6 +969,14 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"/github-updater.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/github-updater.php",
+		"oF": 0
+		},
 	"/lexomatic-tools.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -986,9 +994,9 @@
 		"eSQ": 1,
 		"ft": 4096,
 		"hM": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "/README.html",
-		"oF": 0,
+		"oF": 1,
 		"oFM": 0,
 		"oS": 0,
 		"pHT": 0,
