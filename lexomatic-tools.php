@@ -14,6 +14,8 @@
  * @package RB_Lexomatic_Tools
  */
 
+wp_die('testing');
+
 /**
  * Class RB_Lexomatic_Tools
  */
@@ -185,7 +187,6 @@ function lexomatic_tools() {
 }
 
 lexomatic_tools();
-
 
 // GitHub updater, in case updates are needed
 include( dirname( __FILE__ ) . '/github-updater.php' );
