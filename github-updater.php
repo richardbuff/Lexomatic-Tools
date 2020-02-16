@@ -74,7 +74,7 @@ if ( ! class_exists( 'GHU_Core' ) ) {
                         $temp['url'] = "https://github.com/$owner/$repo/";
                         $temp['package'] = $latest_tag['zipball_url'];
                         $plugin_data[ $slug ] = $temp;
-                    } 
+                    }
                 }
             }
 
