@@ -1,5 +1,4 @@
 <?php
-
 defined( 'ABSPATH' ) or exit;
 
 if ( ! class_exists( 'GHU_Core' ) ) {
@@ -45,8 +44,10 @@ if ( ! class_exists( 'GHU_Core' ) ) {
         function get_github_updates() {
             $plugin_data = array();
             $plugins = get_plugins();
+
             foreach ( $plugins as $slug => $info ) {
                 if ( isset( $this->active_plugins[ $slug ] ) && ! empty( $info['GitHub URI'] ) ) {
+
                     $temp = array(
                         'plugin'            => $slug,
                         'slug'              => trim( dirname( $slug ), '/' ),
@@ -67,12 +68,13 @@ if ( ! class_exists( 'GHU_Core' ) ) {
                     $json = json_decode( $request['body'], true );
 
                     if ( is_array( $json ) && ! empty( $json ) ) {
+
                         $latest_tag = $json[0];
                         $temp['new_version'] = $latest_tag['name'];
                         $temp['url'] = "https://github.com/$owner/$repo/";
                         $temp['package'] = $latest_tag['zipball_url'];
                         $plugin_data[ $slug ] = $temp;
-                    }
+                    } 
                 }
             }
 
