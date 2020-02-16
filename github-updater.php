@@ -1,4 +1,5 @@
 <?php
+
 defined( 'ABSPATH' ) or exit;
 
 if ( ! class_exists( 'GHU_Core' ) ) {
@@ -24,13 +25,14 @@ if ( ! class_exists( 'GHU_Core' ) ) {
             $this->update_data = (array) get_option( 'ghu_update_data' );
             $active = (array) get_option( 'active_plugins' );
 
-            foreach ( $active as $slug ) {
-                $this->active_plugins[ $slug ] = true;
+            foreach ( $active as $plugin_path ) {
+                $this->active_plugins[ $plugin_path ] = true;
             }
 
             // transient expiration
-            if ( ( ( $now - $last_checked ) > $check_interval ) || ( isset( $_GET['ea_debug']) && $_GET['ea_debug'] ) ) {
+            if ( ( $now - $last_checked ) > $check_interval ) {
                 $this->update_data = $this->get_github_updates();
+
                 update_option( 'ghu_update_data', $this->update_data );
                 update_option( 'ghu_last_checked', $now );
             }
@@ -41,15 +43,13 @@ if ( ! class_exists( 'GHU_Core' ) ) {
          * Fetch the latest GitHub tags and build the plugin data array
          */
         function get_github_updates() {
-            $plugin_data = array();
+            $output = array();
             $plugins = get_plugins();
-
-            foreach ( $plugins as $slug => $info ) {
-                if ( isset( $this->active_plugins[ $slug ] ) && ! empty( $info['GitHub URI'] ) ) {
-
+            foreach ( $plugins as $plugin_path => $info ) {
+                if ( isset( $this->active_plugins[ $plugin_path ] ) && ! empty( $info['GitHub URI'] ) ) {
                     $temp = array(
-                        'plugin'            => $slug,
-                        'slug'              => trim( dirname( $slug ), '/' ),
+                        'plugin'            => $plugin_path,
+                        'slug'              => trim( dirname( $plugin_path ), '/' ),
                         'name'              => $info['Name'],
                         'github_repo'       => $info['GitHub URI'],
                         'description'       => $info['Description'],
@@ -58,7 +58,7 @@ if ( ! class_exists( 'GHU_Core' ) ) {
                     // get plugin tags
                     list( $owner, $repo ) = explode( '/', $temp['github_repo'] );
                     $request = wp_remote_get( "https://api.github.com/repos/$owner/$repo/tags" );
-wp_die(var_dump($request));
+
                     // WP error or rate limit exceeded
                     if ( is_wp_error( $request ) || 200 != wp_remote_retrieve_response_code( $request ) ) {
                         break;
@@ -67,39 +67,39 @@ wp_die(var_dump($request));
                     $json = json_decode( $request['body'], true );
 
                     if ( is_array( $json ) && ! empty( $json ) ) {
-
                         $latest_tag = $json[0];
                         $temp['new_version'] = $latest_tag['name'];
                         $temp['url'] = "https://github.com/$owner/$repo/";
                         $temp['package'] = $latest_tag['zipball_url'];
-                        $plugin_data[ $slug ] = $temp;
+                        $output[ $plugin_path ] = $temp;
                     }
                 }
             }
 
-            return $plugin_data;
+            return $output;
         }
 
 
         /**
          * Get plugin info for the "View Details" popup
+         *
+         * $args->slug = "edd-no-logins"
+         * $plugin_path = "edd-no-logins/edd-no-logins.php"
          */
         function plugins_api( $default = false, $action, $args ) {
             if ( 'plugin_information' == $action ) {
-                if ( isset( $this->update_data[ $args->slug ] ) ) {
-                    $plugin = $this->update_data[ $args->slug ];
-
-                    return (object) array(
-                        'name'          => $plugin['name'],
-                        'slug'          => $plugin['plugin'],
-                        'version'       => $plugin['new_version'],
-                        'requires'      => '4.4',
-                        'tested'        => get_bloginfo( 'version' ),
-                        'last_updated'  => date( 'Y-m-d' ),
-                        'sections' => array(
-                            'description' => $plugin['description']
-                        )
-                    );
+                foreach ( $this->update_data as $plugin_path => $info ) {
+                    if ( $info['slug'] == $args->slug ) {
+                        return (object) array(
+                            'name'          => $info['name'],
+                            'slug'          => $info['slug'],
+                            'version'       => $info['new_version'],
+                            'download_link' => $info['package'],
+                            'sections' => array(
+                                'description' => $info['description']
+                            )
+                        );
+                    }
                 }
             }
 
@@ -108,17 +108,13 @@ wp_die(var_dump($request));
 
 
         function set_update_data( $transient ) {
-            if ( empty( $transient->checked ) ) {
-                return $transient;
-            }
-
-            foreach ( $this->update_data as $plugin => $info ) {
-                if ( isset( $this->active_plugins[ $plugin ] ) ) {
-                    $plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
+            foreach ( $this->update_data as $plugin_path => $info ) {
+                if ( isset( $this->active_plugins[ $plugin_path ] ) ) {
+                    $plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_path );
                     $version = $plugin_data['Version'];
 
                     if ( version_compare( $version, $info['new_version'], '<' ) ) {
-                        $transient->response[ $plugin ] = (object) $info;
+                        $transient->response[ $plugin_path ] = (object) $info;
                     }
                 }
             }
@@ -133,9 +129,9 @@ wp_die(var_dump($request));
         function upgrader_source_selection( $source, $remote_source, $upgrader, $hook_extra = null ) {
             global $wp_filesystem;
 
-            $plugin = isset( $hook_extra['plugin'] ) ? $hook_extra['plugin'] : false;
-            if ( isset( $this->update_data[ $plugin ] ) && $plugin ) {
-                $new_source = trailingslashit( $remote_source ) . dirname( $plugin );
+            $plugin_path = isset( $hook_extra['plugin'] ) ? $hook_extra['plugin'] : false;
+            if ( isset( $this->update_data[ $plugin_path ] ) ) {
+                $new_source = trailingslashit( $remote_source ) . dirname( $plugin_path );
                 $wp_filesystem->move( $source, $new_source );
                 return trailingslashit( $new_source );
             }

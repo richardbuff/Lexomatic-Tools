@@ -4,7 +4,7 @@
  * Plugin URI:  https://github.com/richardbuff/Lexomatic-Tools
  * GitHub URI: richardbuff/Lexomatic-Tools
  * Description: Custom tools plugin for Lexomatic sites, not tested for general public use
- * Version:     1.2.0
+ * Version:     1.5.0
  * Author:      Richard Buff
  * Author URI:  https://www.expandingdesigns.com
  * Requires at least: 5.0
@@ -32,7 +32,7 @@ class RB_Lexomatic_Tools {
 	 *
 	 * @var string
 	 */
-	private $plugin_version = '1.2.0';
+	private $plugin_version = '1.5.0';
 
 	/**
 	 * Class Instance.
@@ -41,18 +41,30 @@ class RB_Lexomatic_Tools {
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof RB_Lexomatic_Tools ) ) {
-			self::$instance = new RB_Lexomatic_Tools();
 
+			self::$instance = new RB_Lexomatic_Tools();
+			// includes
+			self::$instance->includes();
 			// scripts
 			add_action( 'wp_enqueue_scripts', [ self::$instance, 'register_styles' ] );
 			// settings page
 			add_action( 'admin_menu', [ self::$instance, 'add_settings_page' ] );
 			// callout boxes shortcode
       add_shortcode( 'lexomatic_callout_box', [ self::$instance, 'callout_box' ] );
+
 		}
 
 		return self::$instance;
 	}
+
+	/*
+ 	 * Includes
+ 	 *
+ 	 */
+ 	public function includes() {
+		// GitHub updater, in case updates are needed
+		require_once( dirname( __FILE__ ) . '/github-updater.php' );
+ 	}
 
 	/*
  	 * Add Settings Page
@@ -186,6 +198,3 @@ function lexomatic_tools() {
 }
 
 lexomatic_tools();
-
-// GitHub updater, in case updates are needed
-include( dirname( __FILE__ ) . '/github-updater.php' );
