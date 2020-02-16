@@ -29,9 +29,8 @@ if ( ! class_exists( 'GHU_Core' ) ) {
             }
 
             // transient expiration
-            if ( ( $now - $last_checked ) > $check_interval ) {
+            if ( ( ( $now - $last_checked ) > $check_interval ) || ( isset( $_GET['ea_debug']) && $_GET['ea_debug'] ) ) {
                 $this->update_data = $this->get_github_updates();
-
                 update_option( 'ghu_update_data', $this->update_data );
                 update_option( 'ghu_last_checked', $now );
             }
@@ -59,7 +58,7 @@ if ( ! class_exists( 'GHU_Core' ) ) {
                     // get plugin tags
                     list( $owner, $repo ) = explode( '/', $temp['github_repo'] );
                     $request = wp_remote_get( "https://api.github.com/repos/$owner/$repo/tags" );
-
+wp_die(var_dump($request));
                     // WP error or rate limit exceeded
                     if ( is_wp_error( $request ) || 200 != wp_remote_retrieve_response_code( $request ) ) {
                         break;

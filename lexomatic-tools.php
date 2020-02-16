@@ -14,7 +14,6 @@
  * @package RB_Lexomatic_Tools
  */
 
-wp_die('testing');
 
 /**
  * Class RB_Lexomatic_Tools
