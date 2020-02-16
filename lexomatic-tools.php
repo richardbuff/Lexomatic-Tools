@@ -2,6 +2,7 @@
 /**
  * Plugin Name: Lexomatic Tools
  * Plugin URI:  https://github.com/richardbuff/Lexomatic-Tools
+ * GitHub URI: richardbuff/Lexomatic-Tools
  * Description: Custom tools plugin for Lexomatic sites, not tested for general public use
  * Version:     1.1.0
  * Author:      Richard Buff
