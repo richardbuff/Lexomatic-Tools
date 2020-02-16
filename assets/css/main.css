@@ -1,0 +1,37 @@
+/** Brand Color */
+/* Callout Boxes : =callouts
+--------------------------------------------- */
+.lexomatic-callout-box { border: 1px solid transparent; border-radius: 6px; margin: 0 0 32px; overflow: hidden; padding: 24px; width: 100%; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-primary-color-blue, .lexomatic-callout-box.lexomatic-callout-box__has-primary-color-purple { background-color: #E8F1F9; border-color: #c0d8ee; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-primary-color-gray, .lexomatic-callout-box.lexomatic-callout-box__has-primary-color-grey { background-color: #F5F5F5; border-color: gainsboro; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-primary-color-green { background-color: #E4F2E7; border-color: #c2e1c8; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-primary-color-red { background-color: #F6E3E1; border-color: #eabeba; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-primary-color-yellow { background-color: #FEF1E0; border-color: #fcdbaf; }
+
+.lexomatic-callout-box p:last-child { line-height: 1.2; margin-bottom: 0; }
+
+.gform_wrapper .lexomatic-callout-box { font-size: 16px; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon { position: relative; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon .lexomatic-callout-box-icon { position: absolute; left: 24px; top: 24px; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon.lexomatic-callout-box__has-icon-size-small { min-height: 96px; padding-left: 96px; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon.lexomatic-callout-box__has-icon-size-small .lexomatic-callout-box-icon svg { height: 48px; width: 48px; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon.lexomatic-callout-box__has-icon-size-medium { min-height: 112px; padding-left: 112px; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon.lexomatic-callout-box__has-icon-size-medium .lexomatic-callout-box-icon svg { height: 64px; width: 64px; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon.lexomatic-callout-box__has-icon-size-large { min-height: 128px; padding-left: 128px; }
+
+.lexomatic-callout-box.lexomatic-callout-box__has-icon.lexomatic-callout-box__has-icon-size-large .lexomatic-callout-box-icon svg { height: 80px; width: 80px; }
+
+.lexomatic-callout-box .lexomatic-callout-box__title { line-height: 1.1; margin-top: 0; margin-bottom: 1rem; }
+/*# sourceMappingURL=main.css.map */

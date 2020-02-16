@@ -1,0 +1,114 @@
+/* Callout Boxes : =callouts
+--------------------------------------------- */
+$content-box-padding: 24px;
+$small-icon: 48px;
+$medium-icon: 64px;
+$large-icon: 80px;
+
+.lexomatic-callout-box {
+	border: 1px solid transparent;
+	border-radius: 6px;
+	margin: 0 0 $base-margin;
+	overflow: hidden;
+	padding: $content-box-padding;
+	width: 100%;
+
+  &.lexomatic-callout-box__has-primary-color-blue,
+  &.lexomatic-callout-box__has-primary-color-purple {
+      background-color: brand-color('blue');
+      border-color: brand-color('blue', 'darken');
+  }
+
+  &.lexomatic-callout-box__has-primary-color-gray,
+  &.lexomatic-callout-box__has-primary-color-grey {
+      background-color: brand-color('grey');
+      border-color: brand-color('grey', 'darken');
+  }
+
+  &.lexomatic-callout-box__has-primary-color-green {
+      background-color: brand-color('green');
+      border-color: brand-color('green', 'darken');
+  }
+
+  &.lexomatic-callout-box__has-primary-color-red {
+      background-color: brand-color('red');
+      border-color: brand-color('red', 'darken');
+  }
+
+  &.lexomatic-callout-box__has-primary-color-yellow {
+      background-color: brand-color('yellow');
+      border-color: brand-color('yellow', 'darken');
+  }
+
+	p:last-child {
+    line-height: 1.2;
+		margin-bottom: 0;
+	}
+
+	// change the font-size when inside a gravity form so it looks more consistent
+	.gform_wrapper & {
+		font-size: 16px;
+	}
+
+	&.lexomatic-callout-box__has-icon { // Content boxes with left aligned icons in them
+		position: relative;
+
+    .lexomatic-callout-box-icon {
+      position: absolute;
+      left: 24px;
+      top: 24px;
+    }
+
+		// minimum height prevents box for being too short for the icon when there isn't enough text content in it
+		&.lexomatic-callout-box__has-icon-size-small{
+			min-height: $content-box-padding + $small-icon + $content-box-padding;
+			padding-left: $content-box-padding + $small-icon + 24px;
+
+      .lexomatic-callout-box-icon {
+        svg {
+          height: $small-icon;
+          width: $small-icon;
+        }
+      }
+
+		}
+
+		&.lexomatic-callout-box__has-icon-size-medium{
+			min-height: $content-box-padding + $medium-icon + $content-box-padding;
+			padding-left: $content-box-padding + $medium-icon + 24px;
+
+      .lexomatic-callout-box-icon {
+        svg {
+          height: $medium-icon;
+          width: $medium-icon;
+        }
+      }
+
+		}
+
+		&.lexomatic-callout-box__has-icon-size-large{
+			min-height: $content-box-padding + $large-icon + $content-box-padding;
+			padding-left: $content-box-padding + $large-icon + 24px;
+
+      .lexomatic-callout-box-icon {
+        svg {
+          height: $large-icon;
+          width: $large-icon;
+        }
+      }
+
+		}
+
+	}
+
+  .lexomatic-callout-box__title {
+    line-height: 1.1;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .lexomatic-callout-box__content {
+  }
+
+
+}

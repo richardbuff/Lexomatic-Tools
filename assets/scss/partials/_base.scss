@@ -1,0 +1,13 @@
+$base-margin: 32px;
+
+
+// Plugin Colors
+$brand_colors: (
+	'blue'	: #E8F1F9,
+	'gray'	: #F5F5F5,
+	'grey'	: #F5F5F5, // duplicate of 'gray'
+	'green'	: #E4F2E7,
+	'red'	: #F6E3E1,
+	'yellow'	: #FEF1E0,
+);
+@import "../modules/brand-color";
