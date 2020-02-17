@@ -4,7 +4,7 @@
  * Plugin URI:  https://github.com/richardbuff/Lexomatic-Tools
  * GitHub Plugin URI: richardbuff/Lexomatic-Tools
  * Description: Custom tools plugin for Lexomatic sites, not tested for general public use
- * Version:     1.6.0
+ * Version:     1.7.0
  * Author:      Richard Buff
  * Author URI:  https://www.expandingdesigns.com
  * Text Domain: lexomatic-tools
@@ -33,7 +33,7 @@ class RB_Lexomatic_Tools {
 	 *
 	 * @var string
 	 */
-	private $plugin_version = '1.6.0';
+	private $plugin_version = '1.7.0';
 
 	/**
 	 * Class Instance.
