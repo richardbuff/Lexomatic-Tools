@@ -90,7 +90,7 @@ class RB_Lexomatic_Tools {
 		}
 
 		echo '<h2>' . __('Lexomatic Tools', 'lexomatic-tools') . '</h2>';
-		echo '<p>A custom plugin.</p>';
+		echo '<p>A custom plugin by <a href="https://www.expandingdesigns.com">Richard Buff</a>ß.</p>';
 		echo '<h3>' . __('Icons', 'lexomatic-tools') . '</h3>';
 
 		echo '<div class="lexomatic-icons-grid" style="display:grid;grid-gap:20px;grid-template-columns:repeat(3, 1fr);max-width: 800px;">';
@@ -101,7 +101,7 @@ class RB_Lexomatic_Tools {
 
 		echo '<h3>Callout Boxes Using the Block Editor (Gutenberg)</h3>';
 
-		echo '<p>Drop this code into a sample page to showcase all callout box possibilities</p>';
+		echo '<p>Copy and paste this code into a sample page to showcase all callout box possibilities</p>';
 
 		$gutenberg_callout_boxes_ouput = <<<EOD
 		<!-- wp:heading -->
@@ -153,6 +153,8 @@ EOD;
 
 
 		echo '<h3>Callout Boxes - With The Classic Editor</h3>';
+
+		echo '<p>Copy and paste this code into a sample page to showcase all callout box possibilities</p>';
 
 		$classic_editor_callout_boxes_ouput = <<<EOD
 
