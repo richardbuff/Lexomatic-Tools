@@ -147,7 +147,7 @@ class RB_Lexomatic_Tools {
 		<!-- wp:shortcode -->
 		[lexomatic_callout_box title="My Custom Title Large Icon Size" content="My custom content with a background color that is 'red' and an icon size that is set to 'large' and an icon value set to 'award.'" color="red" icon="award" icon_size="large"]
 		<!-- /wp:shortcode -->
-		EOD;
+EOD;
 
 		echo htmlspecialchars( $gutenberg_callout_boxes_ouput );
 
@@ -178,7 +178,7 @@ class RB_Lexomatic_Tools {
 
 		[lexomatic_callout_box title="My Custom Title Large Icon Size" content="My custom content with a background color that is 'red' and an icon size that is set to 'large' and an icon value set to 'award.'" color="red" icon="award" icon_size="large"]
 
-		EOD;
+EOD;
 
 		echo htmlspecialchars( $classic_editor_callout_boxes_ouput );
 
@@ -205,7 +205,7 @@ class RB_Lexomatic_Tools {
 		wp_register_style(
 			'lexomatic-tools',
 			plugins_url( '/assets/css/main.css', __FILE__ ),
-			[],
+			array(),
 			$this->plugin_version
 		);
 
@@ -236,7 +236,7 @@ class RB_Lexomatic_Tools {
       'icon_size' => 'medium',
     ), $atts, 'lexomatic_callout_box' );
 
-    $additional_classes = [];
+    $additional_classes = array();
 
     // color class
     $additional_classes[] = 'lexomatic-callout-box__has-primary-color-' . esc_attr( $atts['color'] );
@@ -249,7 +249,7 @@ class RB_Lexomatic_Tools {
       }
     }
 
-    $additional_classes = join( ' ', $additional_classes );;
+    $additional_classes = join( ' ', $additional_classes );
 
     ob_start();
     echo '<div class="lexomatic-callout-box ' . $additional_classes . '">';
