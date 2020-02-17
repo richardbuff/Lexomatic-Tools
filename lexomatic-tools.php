@@ -7,6 +7,7 @@
  * Version:     1.5.0
  * Author:      Richard Buff
  * Author URI:  https://www.expandingdesigns.com
+ * Text Domain: lexomatic-tools
  * Requires at least: 5.0
  * License:     MIT
  * License URI: http://www.opensource.org/licenses/mit-license.php
@@ -76,7 +77,7 @@ class RB_Lexomatic_Tools {
 
 
 	/**
-	 * Build Settings Page
+	 * Build Settings Page (the actual markup of the settings page in the backend)
 	 *
 	 */
 	public function settings_page() {
@@ -91,9 +92,100 @@ class RB_Lexomatic_Tools {
 			$icons[ $i ] = substr( $icon, 0, -4 );
 		}
 
+		echo '<h2>' . __('Lexomatic Tools', 'lexomatic-tools') . '</h2>';
+		echo '<p>A custom plugin.</p>';
+		echo '<h3>' . __('Icons', 'lexomatic-tools') . '</h3>';
+
+		echo '<div class="lexomatic-icons-grid" style="display:grid;grid-gap:20px;grid-template-columns:repeat(3, 1fr);max-width: 800px;">';
 		foreach( $icons as $icon ){
 			echo '<p>' . RB_Lexomatic_Tools::get_icon( $icon ) . ' ' . $icon . '</p>';
 		}
+		echo '</div><!-- .lexomatic-icons-grid -->';
+
+		echo '<h3>Callout Boxes Using the Classic Editor (Gutenberg)</h3>';
+
+		echo '<p>Drop this code into a sample page to showcase all callout box possibilities</p>';
+
+		$gutenberg_callout_boxes_ouput = <<<EOD
+		<!-- wp:heading -->
+		<h2>Callout Boxes Without Icons - Using The Block Editor</h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is blue" color="blue"]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is gray" color="gray"]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is green" color="green"]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is red" color="red"]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is yellow" color="yellow"]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:heading -->
+		<h2>Callout Boxes With Icons - Using The Block Editor</h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title Default Icon Size" content="My custom content with a background color that is 'default' and an icon size that is 'default' and an icon value set to 'award.'" icon="award" ]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title Small Icon Size" content="My custom content with a background color that is 'blue' and an icon size that is the 'small' and an icon value set to 'award.'" color="blue" icon="award" icon_size="small"]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title Medium Icon Size" content="My custom content with a background color that is 'green' and an icon size that is set to 'medium' and an icon value set to 'award.'" color="green" icon="award" icon_size="medium"]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:shortcode -->
+		[lexomatic_callout_box title="My Custom Title Large Icon Size" content="My custom content with a background color that is 'red' and an icon size that is set to 'large' and an icon value set to 'award.'" color="red" icon="award" icon_size="large"]
+		<!-- /wp:shortcode -->
+		EOD;
+
+		echo htmlspecialchars( $gutenberg_callout_boxes_ouput );
+
+
+		echo '<h3>Callout Boxes - With The Classic Editor</h3>';
+
+		$classic_editor_callout_boxes_ouput = <<<EOD
+
+		<h2>Callout Boxes Without Icons Using the Classic Editor</h2>
+
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is blue" color="blue"]
+
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is gray" color="gray"]
+
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is green" color="green"]
+
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is red" color="red"]
+
+		[lexomatic_callout_box title="My Custom Title" content="My custom content with a background color that is yellow" color="yellow"]
+
+		<h2>Callout Boxes With Icons Using the Classic Editor</h2>
+
+		[lexomatic_callout_box title="My Custom Title Default Icon Size" content="My custom content with a background color that is 'default' and an icon size that is 'default' and an icon value set to 'award.'" icon="award" ]
+
+		[lexomatic_callout_box title="My Custom Title Small Icon Size" content="My custom content with a background color that is 'blue' and an icon size that is the 'small' and an icon value set to 'award.'" color="blue" icon="award" icon_size="small"]
+
+		[lexomatic_callout_box title="My Custom Title Medium Icon Size" content="My custom content with a background color that is 'green' and an icon size that is set to 'medium' and an icon value set to 'award.'" color="green" icon="award" icon_size="medium"]
+
+		[lexomatic_callout_box title="My Custom Title Large Icon Size" content="My custom content with a background color that is 'red' and an icon size that is set to 'large' and an icon value set to 'award.'" color="red" icon="award" icon_size="large"]
+
+		EOD;
+
+		echo htmlspecialchars( $classic_editor_callout_boxes_ouput );
+
+
 
 	}
 
