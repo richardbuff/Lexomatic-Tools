@@ -1,20 +1,19 @@
 <?php
 /**
  * Plugin Name: Lexomatic Tools
- * Plugin URI:  https://github.com/richardbuff/Lexomatic-Tools
+ * Plugin URI: https://github.com/richardbuff/Lexomatic-Tools
  * GitHub Plugin URI: richardbuff/Lexomatic-Tools
  * Description: Custom tools plugin for Lexomatic sites, not tested for general public use
- * Version:     1.8.0
- * Author:      Richard Buff
- * Author URI:  https://www.expandingdesigns.com
+ * Version: 1.8.1
+ * Author: Richard Buff
+ * Author URI: https://www.expandingdesigns.com
  * Text Domain: lexomatic-tools
  * Requires at least: 5.0
- * License:     MIT
+ * License: MIT
  * License URI: http://www.opensource.org/licenses/mit-license.php
  *
  * @package RB_Lexomatic_Tools
  */
-
 
 /**
  * Class RB_Lexomatic_Tools
