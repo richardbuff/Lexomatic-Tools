@@ -63,8 +63,6 @@ class RB_Lexomatic_Tools {
  	 *
  	 */
  	public function includes() {
-		// GitHub updater, in case updates are needed
-		require_once( dirname( __FILE__ ) . '/github-updater.php' );
  	}
 
 	/*
