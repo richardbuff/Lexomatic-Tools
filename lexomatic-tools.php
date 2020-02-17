@@ -99,7 +99,7 @@ class RB_Lexomatic_Tools {
 		}
 		echo '</div><!-- .lexomatic-icons-grid -->';
 
-		echo '<h3>Callout Boxes Using the Classic Editor (Gutenberg)</h3>';
+		echo '<h3>Callout Boxes Using the Block Editor (Gutenberg)</h3>';
 
 		echo '<p>Drop this code into a sample page to showcase all callout box possibilities</p>';
 
