@@ -1,4 +1,5 @@
 <?php
+// https://github.com/FacetWP/github-updater-lite
 
 defined( 'ABSPATH' ) or exit;
 
