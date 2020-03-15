@@ -32,7 +32,7 @@ class RB_Lexomatic_Tools {
 	 *
 	 * @var string
 	 */
-	private $plugin_version = '1.8.5';
+	private $plugin_version = '1.8.6';
 
 	/**
 	 * Class Instance.
