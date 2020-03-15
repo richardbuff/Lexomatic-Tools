@@ -231,7 +231,7 @@ EOD;
     // Defaults
     $atts = shortcode_atts(
     array(
-      'title' => 'Lexomatic Tools callout box with title not set',
+      'title' => '',
       'content'   => 'There was no content specified in the shortcode parameters so you are seeing sample content for this Lexomatic Tools callout box',
       'color'   => 'grey',
       'icon'   => false,
@@ -264,7 +264,9 @@ EOD;
     }
 
     echo '<div class="lexomatic-callout-box__content">';
-    echo '<h5 class="lexomatic-callout-box__title">' . esc_html( $atts['title'] ) . '</h5>';
+		if( $atts['title'] ){
+			echo '<h5 class="lexomatic-callout-box__title">' . esc_html( $atts['title'] ) . '</h5>';
+		}
     echo '<p>' . html_entity_decode( $atts['content'] ) . '</p>';
     echo '</div><!-- .lexomatic-callout-box__content -->';
     echo '</div><!-- .lexomatic-callout-box-inner -->';
