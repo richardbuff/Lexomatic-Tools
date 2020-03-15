@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/richardbuff/lexomatic-tools
  * GitHub Plugin URI: https://github.com/richardbuff/lexomatic-tools
  * Description: Custom tools plugin for Lexomatic sites, not tested for general public use
- * Version: 1.8.5
+ * Version: 1.8.6
  * Author: Richard Buff
  * Author URI: https://www.expandingdesigns.com
  * Text Domain: lexomatic-tools
